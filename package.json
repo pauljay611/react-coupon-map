@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "private": true,
+  "workspaces": ["server", "client","packages/*"],
   "dependencies": {
     "express": "^4.17.1"
   },
@@ -14,7 +16,6 @@
     "typescript": "^4.1.3"
   },
   "scripts": {
-    "start": "nodemon index.ts",
-    "build": "tsc --project ./"
+    "server-start": "yarn workspace server start"
   }
 }
