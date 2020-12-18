@@ -1,4 +1,4 @@
-interface IStore {
+export interface IStore {
   ID: string;
   name: string;
   description: string;
@@ -6,7 +6,7 @@ interface IStore {
   lng: number;
 }
 
-interface ICoupon {
+export interface ICoupon {
   ID: string;
   name: string;
   description: string;
@@ -15,24 +15,24 @@ interface ICoupon {
   image: string;
 }
 
-enum CouponType {
+export enum CouponType {
   PriceCut,
   Discount,
   Free,
 }
 
-interface IAccount {
+export interface IAccount {
   ID: string;
   name: string;
   userInfo: IUserInfo;
 }
 
-interface IUserInfo {
+export interface IUserInfo {
   address: string;
   phone: number;
 }
 
-interface ICategory {
+export interface ICategory {
   ID: string;
   name: string;
   description: string;
