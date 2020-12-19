@@ -1,7 +1,7 @@
 import { DataTypes, Sequelize, Model } from "sequelize";
 import { IStore } from "../types";
 
-export const storeModelName = "store";
+export const storeModelName = "Store";
 
 export const storeModelAttributes = {
   ID: {
