@@ -1,9 +1,9 @@
-import { DataTypes, Sequelize, Model } from "sequelize";
+import { DataTypes, Model, ModelAttributes } from "sequelize";
 import { IStore } from "../types";
 
 export const storeModelName = "Store";
 
-export const storeModelAttributes = {
+export const storeModelAttributes: ModelAttributes<Store, IStore> = {
   ID: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -18,11 +18,11 @@ export const storeModelAttributes = {
     allowNull: false,
   },
   lat: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.DECIMAL(10, 8),
     allowNull: false,
   },
   lng: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.DECIMAL(11, 8),
     allowNull: false,
   },
 };
