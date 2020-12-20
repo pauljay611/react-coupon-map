@@ -2,6 +2,10 @@ import { Sequelize } from "sequelize";
 import config from "../configs/mysql";
 import Store, { storeModelName, storeModelAttributes } from "./store";
 import Coupon, { couponModelName, couponModelAttributes } from "./coupon";
+import Category, {
+  categoryModelName,
+  categoryModelAttributes,
+} from "./category";
 
 const sequelize = new Sequelize(config.database, config.user, config.password, {
   host: config.host,
@@ -32,6 +36,12 @@ Store.init(storeModelAttributes, {
 Coupon.init(couponModelAttributes, {
   sequelize,
   modelName: couponModelName,
+  timestamps: true,
+});
+
+Category.init(categoryModelAttributes, {
+  sequelize,
+  modelName: categoryModelName,
   timestamps: true,
 });
 
