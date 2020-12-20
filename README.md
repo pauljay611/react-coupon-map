@@ -1,6 +1,6 @@
 # React Coupon Map
 
-- docker start my-mysql
+- docker-compose up -d
 - yarn db:create
 - yarn server:start
 
