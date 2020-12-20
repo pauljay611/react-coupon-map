@@ -1,10 +1,12 @@
 # React Coupon Map
 
+## setup
+
 - docker-compose up -d
 - yarn db:create
 - yarn server:start
 
-.env
+.env file
 
 ```
 APP_DB=coupon_map
