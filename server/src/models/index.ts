@@ -45,4 +45,7 @@ Category.init(categoryModelAttributes, {
   timestamps: true,
 });
 
+Store.belongsToMany(Coupon, { through: "StoreCoupon" });
+Coupon.belongsToMany(Store, { through: "StoreCoupon" });
+
 export default sequelize;
