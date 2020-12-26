@@ -47,8 +47,5 @@ Category.init(categoryModelAttributes, {
 
 Store.belongsToMany(Coupon, { through: "StoreCoupon" });
 Coupon.belongsToMany(Store, { through: "StoreCoupon" });
-Category.hasMany(Store)
-Store.belongsTo(Category)
-
 
 export default sequelize;

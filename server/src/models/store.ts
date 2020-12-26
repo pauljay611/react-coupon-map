@@ -25,6 +25,10 @@ export const storeModelAttributes: ModelAttributes<Store, IStore> = {
     type: DataTypes.DECIMAL(11, 8),
     allowNull: false,
   },
+  category_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
 };
 
 class Store extends Model<IStore> {}

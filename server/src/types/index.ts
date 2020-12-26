@@ -4,6 +4,7 @@ export interface IStore {
   description: string;
   lat: number;
   lng: number;
+  category_id: number;
 }
 
 export interface ICoupon {

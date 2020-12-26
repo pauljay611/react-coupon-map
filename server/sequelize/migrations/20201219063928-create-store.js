@@ -1,7 +1,7 @@
 "use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("Store", {
+    await queryInterface.createTable("Stores", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -37,17 +37,17 @@ module.exports = {
         type: Sequelize.DATE,
       },
     });
-    await queryInterface.addConstraint("Store", ["category_id"], {
+    await queryInterface.addConstraint("Stores", ["category_id"], {
       type: "FOREIGN KEY",
       name: "catogory_id_fk", // useful if using queryInterface.removeConstraint
       references: {
-        table: "Category",
+        table: "Categories",
         field: "id",
       },
       fields: ["category_id"],
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("Store");
+    await queryInterface.dropTable("Stores");
   },
 };
