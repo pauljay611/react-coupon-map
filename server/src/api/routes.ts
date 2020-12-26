@@ -1,23 +1,16 @@
 import express from "express";
-import Store from "../models/store";
-import Coupon from "../models/coupon";
-import Category from "../models/category";
+import {
+  getAllCategories,
+  getAllCoupons,
+  getAllStores,
+} from "../api/controllers";
 
 const router = express.Router();
 
-router.get("/stores", async (req, res) => {
-  const stores = await Store.findAll();
-  res.status(200).json(stores);
-});
+router.get("/stores", getAllStores);
 
-router.get("/coupons", async (req, res) => {
-  const coupons = await Coupon.findAll();
-  res.status(200).json(coupons);
-});
+router.get("/coupons", getAllCoupons);
 
-router.get("/categories", async (req, res) => {
-  const categories = await Category.findAll();
-  res.status(200).json(categories);
-});
+router.get("/categories", getAllCategories);
 
 export default router;
