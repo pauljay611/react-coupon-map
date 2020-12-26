@@ -5,7 +5,7 @@ module.exports = {
     return queryInterface.bulkInsert("StoreCoupon", [
       {
         coupon_id: 1,
-        store_id: 1,
+        store_id: 2,
         createdAt: new Date(),
         updatedAt: new Date(),
       },

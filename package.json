@@ -45,9 +45,6 @@
     "server:start": "yarn workspace server start",
     "client:start": "yarn workspace client start",
     "client:build": "yarn workspace client build",
-    "db:init": "cd server && yarn sequelize-cli init",
-    "db:model": "cd server && npx sequelize-cli db:migrate",
-    "db:seeder": "cd server && npx sequelize-cli db:seed:all",
-    "db:create": "yarn db:model && yarn db:seeder"
+    "db:create": "yarn workspace server db:model && yarn workspace server db:seeder"
   }
 }
