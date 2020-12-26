@@ -1,8 +1,15 @@
 # React Coupon Map
 
+## Environments
+
+- docker 20.10.0
+- node.js 10.16.3
+
 ## setup
 
+- clone project
 - docker-compose up -d
+- yarn
 - yarn db:create
 - yarn server:start
 
