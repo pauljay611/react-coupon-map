@@ -15,6 +15,6 @@ module.exports = {
     ]);
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete("Coupon", null, {});
+    return queryInterface.bulkDelete("Coupons", null, {});
   },
 };

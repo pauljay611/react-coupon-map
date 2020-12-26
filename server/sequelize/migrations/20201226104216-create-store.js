@@ -27,6 +27,12 @@ module.exports = {
       category_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: {
+            tableName: "Categories",
+          },
+          key: "id",
+        },
       },
       createdAt: {
         allowNull: false,
@@ -36,15 +42,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
-    });
-    await queryInterface.addConstraint("Stores", ["category_id"], {
-      type: "FOREIGN KEY",
-      name: "catogory_id_fk", // useful if using queryInterface.removeConstraint
-      references: {
-        table: "Categories",
-        field: "id",
-      },
-      fields: ["category_id"],
     });
   },
   down: async (queryInterface, Sequelize) => {
