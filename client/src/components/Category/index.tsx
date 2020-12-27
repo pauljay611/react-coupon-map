@@ -1,7 +1,9 @@
 import React from "react";
 import styld from "styled-components";
-
-interface Props {}
+import { ICategory } from "../../types";
+interface Props {
+  categories: ICategory[];
+}
 
 const Wrapper = styld.div`
     width: 100%;

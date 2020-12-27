@@ -1,8 +1,12 @@
 import React from "react";
 import styld from "styled-components";
 import Category from "../Category";
+import { ICategory, IStore } from "../../types";
 
-interface Props {}
+interface Props {
+  categories: ICategory[];
+  stores: IStore[];
+}
 
 const Wrapper = styld.div`
     width: 100%;
@@ -12,10 +16,12 @@ const Wrapper = styld.div`
 `;
 
 const Map: React.FC<Props> = (props: Props) => {
+  const { categories, stores } = props;
+
   return (
     <Wrapper>
       Map
-      <Category />
+      <Category categories={categories} />
     </Wrapper>
   );
 };

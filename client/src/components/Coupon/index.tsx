@@ -1,7 +1,9 @@
 import React from "react";
 import styld from "styled-components";
-
-interface Props {}
+import { ICoupon } from "../../types";
+interface Props {
+  coupons: ICoupon[];
+}
 
 const Wrapper = styld.div`
     width: 100%;
