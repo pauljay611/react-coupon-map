@@ -2,10 +2,12 @@ import { findAllCoupons, findCouponByID } from "../dao/coupon";
 
 class Coupon {
   static async getAllData() {
-    const stores = await findAllCoupons();
+    const coupons = await findAllCoupons();
+    return coupons;
   }
   static async getDataByID(id: number) {
-    const stores = await findCouponByID(id);
+    const coupons = await findCouponByID(id);
+    return coupons;
   }
 }
 

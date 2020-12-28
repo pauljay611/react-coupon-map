@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styld from "styled-components";
 import Category from "../Category";
 import { ICategory, IStore } from "../../types";
-
+import { getStoresAPI } from "../../api/store";
 interface Props {
   categories: ICategory[];
   stores: IStore[];
@@ -17,6 +17,10 @@ const Wrapper = styld.div`
 
 const Map: React.FC<Props> = (props: Props) => {
   const { categories, stores } = props;
+  console.log(process.env.NODE_ENV);
+  useEffect(() => {
+    getStoresAPI().then((res) => console.log(res));
+  }, []);
 
   return (
     <Wrapper>

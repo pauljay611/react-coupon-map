@@ -2,10 +2,12 @@ import { findAllCategories, findCategoryByID } from "../dao/category";
 
 class Category {
   static async getAllData() {
-    const stores = await findAllCategories();
+    const categories = await findAllCategories();
+    return categories;
   }
   static async getDataByID(id: number) {
-    const stores = await findCategoryByID(id);
+    const categories = await findCategoryByID(id);
+    return categories;
   }
 }
 

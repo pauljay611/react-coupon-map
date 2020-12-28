@@ -1,0 +1,8 @@
+import { api } from "./config";
+import { IStore } from "../types";
+
+export const getStoresAPI = () =>
+  api
+    .get<IStore>("/stores")
+    .then((res) => res.data)
+    .catch((err) => console.error(err));

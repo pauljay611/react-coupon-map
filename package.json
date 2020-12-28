@@ -14,10 +14,15 @@
     "@babel/preset-env": "^7.12.10",
     "@babel/preset-react": "^7.12.10",
     "@babel/preset-typescript": "^7.12.7",
+    "@types/axios": "^0.14.0",
+    "@types/cors": "^2.8.9",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/styled-components": "^5.1.5",
+    "axios": "^0.21.1",
     "babel-loader": "^8.2.2",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "css-loader": "^5.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
@@ -42,8 +47,8 @@
     "webpack-cli": "^4.2.0"
   },
   "scripts": {
-    "server:start": "yarn workspace server start",
-    "client:start": "yarn workspace client start",
+    "server:start": "./node_modules/.bin/cross-env NODE_ENV=development yarn workspace server start",
+    "client:start": "./node_modules/.bin/cross-env NODE_ENV=development yarn workspace client start",
     "client:build": "yarn workspace client build",
     "db:create": "yarn workspace server db:model && yarn workspace server db:seeder"
   }
