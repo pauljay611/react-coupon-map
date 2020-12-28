@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styld from "styled-components";
 import Category from "../Category";
 import { ICategory, IStore } from "../../types";
-import { getStoresAPI } from "../../api/store";
+import { getStoresAPI } from "../../services/api/store";
 interface Props {
   categories: ICategory[];
   stores: IStore[];

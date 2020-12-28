@@ -1,5 +1,5 @@
 import { api } from "./config";
-import { IStore } from "../types";
+import { IStore } from "../../types";
 
 export const getStoresAPI = () =>
   api
