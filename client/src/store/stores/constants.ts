@@ -1,22 +1,8 @@
-import { IStore } from "../../types";
+const GET_ALL_STORES = '@STORE/GETALL'
 
-export const GET_STORES = "get-stores";
+const GET_STORE = '@STORE/GET'
 
-export const GET_STORE = "get-store";
-
-interface GetStores {
-  type: typeof GET_STORES;
-}
-
-interface GetStore {
-  type: typeof GET_STORE;
-  payload: {
-    id: number;
-  };
-}
-
-export type StoreActionTypes = GetStores | GetStore;
-
-export interface StoreState {
-  stores: IStore[];
-}
+export default {
+	GET_ALL_STORES,
+	GET_STORE
+} as const

@@ -1,27 +1,10 @@
-import {} from "./actions";
-import {
-  StoreActionTypes,
-  StoreState,
-  GET_STORE,
-  GET_STORES,
-} from "./constants";
+import { createReducer } from 'typesafe-actions'
+import { StoreState, ActionsType } from './types'
 
 const initialState: StoreState = {
-  stores: [],
-};
+	stores: []
+}
 
-const reducer = (
-  state: StoreState = initialState,
-  action: StoreActionTypes
-) => {
-  switch (action.type) {
-    case GET_STORES:
-      return state.stores;
-    case GET_STORE:
-      return state.stores[action.payload.id];
-    default:
-      return state;
-  }
-};
+const reducer = createReducer<StoreState, ActionsType>(initialState)
 
-export default reducer;
+export default reducer

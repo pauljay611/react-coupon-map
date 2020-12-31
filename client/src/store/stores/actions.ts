@@ -1,14 +1,11 @@
-import { GET_STORES, GET_STORE, StoreActionTypes } from "./constants";
+import { createAction } from 'typesafe-actions'
+import constants from './constants'
 
-export function getAllStores(): StoreActionTypes {
-  return {
-    type: GET_STORES,
-  };
-}
+export const getAllStores = createAction(constants.GET_ALL_STORES)()
 
-export function getStore(id: number): StoreActionTypes {
-  return {
-    type: GET_STORE,
-    payload: { id },
-  };
-}
+export const getStore = createAction(constants.GET_STORE, (id: number) => id)()
+
+export default {
+	getAllStores,
+	getStore
+} as const
