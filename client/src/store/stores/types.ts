@@ -7,7 +7,3 @@ export interface StoreState {
 }
 
 export type ActionsType = ActionType<typeof actions>
-
-export type RootState = {
-	weather: StoreState
-}
