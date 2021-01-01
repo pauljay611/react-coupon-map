@@ -1,5 +1,7 @@
-import { api } from './config'
-import { IStore } from '../../types'
+import { api } from "./config";
+import { IStore } from "../../types";
 
 export const getStoresAPI = () =>
-	api.get<IStore[]>('/stores').then((res) => res.data)
+  api.get<IStore[]>("/stores").then((res) => {
+    return res.data;
+  });

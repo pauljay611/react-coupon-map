@@ -9,6 +9,7 @@ import { createStore, applyMiddleware } from "redux";
 import { getAllStoresEpic } from "./stores/epics";
 import storeReducer from "./stores/reducers";
 import { ActionsType } from "./stores/types";
+import * as API from "../services/api/store";
 
 export type RootState = CombinedState<
   StateFromReducersMapObject<typeof reducers>
@@ -26,7 +27,7 @@ const epicMiddleware = createEpicMiddleware<
   ActionsType,
   ActionsType,
   RootState
->();
+>({ dependencies: API });
 
 const rootReducer = combineReducers(reducers);
 
@@ -41,11 +42,12 @@ function configureStore(initialState?: RootState) {
   // compose enhancers
   const enhancer = composeEnhancers(applyMiddleware(...middlewares));
   // create store
+
   return createStore(rootReducer, initialState, enhancer);
 }
 
-epicMiddleware.run(rootEpic);
-
 const store = configureStore();
+
+epicMiddleware.run(rootEpic);
 
 export default store;

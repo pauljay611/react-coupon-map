@@ -6,8 +6,11 @@ import Map from "./Map";
 
 import { ICategory, IStore, ICoupon, CouponType } from "../types";
 
+import store from "../store";
+
 import "../style/reset.css";
 import "../style/global.css";
+import { Provider } from "react-redux";
 
 const Layout = styld.div`
   width: 100vw;
@@ -50,11 +53,13 @@ const mockCoupons: ICoupon[] = [
   },
 ];
 
-const App = () => (
+const App: React.FC = () => (
   <Layout>
     <Wrapper>
-      <Coupon coupons={mockCoupons}></Coupon>
-      <Map categories={mockCategories} stores={mockStores}></Map>
+      <Provider store={store}>
+        <Coupon coupons={mockCoupons}></Coupon>
+        <Map categories={mockCategories} stores={mockStores}></Map>
+      </Provider>
     </Wrapper>
   </Layout>
 );

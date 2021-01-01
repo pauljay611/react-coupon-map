@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
 import styld from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+
 import Category from "../Category";
 import { ICategory, IStore } from "../../types";
-import { getStoresAPI } from "../../services/api/store";
+import store, { RootState } from "../../store";
+import { getAllStores } from "../../store/stores/actions";
 interface Props {
   categories: ICategory[];
   stores: IStore[];
@@ -16,11 +19,15 @@ const Wrapper = styld.div`
 `;
 
 const Map: React.FC<Props> = (props: Props) => {
-  const { categories, stores } = props;
-  console.log(process.env.NODE_ENV);
+  const { stores } = useSelector((state: RootState) => state.store);
+  const dispatch = useDispatch();
+  const { categories } = props;
+
   useEffect(() => {
-    getStoresAPI().then((res) => console.log(res));
+    dispatch(getAllStores());
   }, []);
+
+  console.log(stores);
 
   return (
     <Wrapper>
