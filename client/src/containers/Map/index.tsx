@@ -1,11 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styld from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
 
 import Category from "../Category";
 import { ICategory, IStore } from "../../types";
-import { RootState } from "../../store";
-import { fetchAllStores } from "../../store/stores/actions";
 import { useStores } from "../../hooks/store";
 interface Props {
   categories: ICategory[];
