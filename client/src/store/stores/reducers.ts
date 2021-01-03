@@ -4,14 +4,19 @@ import actions from "./actions";
 
 const initialState: StoreState = {
   stores: [],
+  loading: false,
 };
 
 const reducer = createReducer<StoreState, ActionsType>(initialState)
-  .handleAction(actions.setAllStores, (_, actions) => ({
+  .handleAction(actions.fetchAllStoresSuccess, (_, actions) => ({
     stores: actions.payload,
+    loading: false,
   }))
-  .handleAction(actions.getAllStores, (state) => {
-    return { stores: state.stores };
+  .handleAction(actions.fetchAllStores, (state) => {
+    return { stores: state.stores, loading: true };
+  })
+  .handleAction(actions.fetchAllStoresError, (_, actions) => {
+    return { stores: [], loading: false, error: actions.payload };
   });
 
 export default reducer;

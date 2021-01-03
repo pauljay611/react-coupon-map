@@ -18,7 +18,9 @@ export const getAllStoresEpic: Epic<
   typeof API
 > = (action$, store, { getStoresAPI }) => {
   return action$.pipe(
-    filter(isOfType(constants.GET_ALL_STORES)),
-    mergeMap(() => from(getStoresAPI()).pipe(map(actions.setAllStores)))
+    filter(isOfType(constants.FETCH_ALL_STORES)),
+    mergeMap(() =>
+      from(getStoresAPI()).pipe(map(actions.fetchAllStoresSuccess))
+    )
   );
 };
