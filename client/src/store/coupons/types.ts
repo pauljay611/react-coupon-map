@@ -9,4 +9,4 @@ export interface CouponState {
   readonly error?: Error;
 }
 
-export type ActionsType = ActionType<typeof actions>;
+export type CouponsActionsType = ActionType<typeof actions>;

@@ -9,4 +9,4 @@ export interface StoreState {
   readonly error?: Error;
 }
 
-export type ActionsType = ActionType<typeof actions>;
+export type StoreActionsType = ActionType<typeof actions>;

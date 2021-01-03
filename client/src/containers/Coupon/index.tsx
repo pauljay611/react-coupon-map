@@ -1,5 +1,6 @@
 import React from "react";
 import styld from "styled-components";
+import { useCoupons } from "../../hooks/coupon";
 import { ICoupon } from "../../types";
 interface Props {
   coupons: ICoupon[];
@@ -13,7 +14,20 @@ const Wrapper = styld.div`
 `;
 
 const Coupon: React.FC<Props> = (props: Props) => {
-  return <Wrapper>Coupon</Wrapper>;
+  const { coupons, loading } = useCoupons();
+
+  function renderCoupons() {
+    if (coupons.length === 0) return null;
+    if (loading) return <span>loading</span>;
+    return coupons.map((coupon) => <div key={coupon.ID}>{coupon.name}</div>);
+  }
+
+  return (
+    <Wrapper>
+      Coupon
+      {renderCoupons()}
+    </Wrapper>
+  );
 };
 
 export default Coupon;

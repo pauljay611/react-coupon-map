@@ -6,14 +6,14 @@ import { catchError, filter, map, mergeMap, tap } from "rxjs/operators";
 import * as API from "../../services/api/coupon";
 
 import constants from "./constants";
-import { ActionsType } from "./types";
+import { CouponsActionsType } from "./types";
 import actions from "./actions";
 
 import { RootState } from "../index";
 
 export const getAllCouponsEpic: Epic<
-  ActionsType,
-  ActionsType,
+  CouponsActionsType,
+  CouponsActionsType,
   RootState,
   typeof API
 > = (action$, _, { getCouponsAPI }) => {

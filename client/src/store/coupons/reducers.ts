@@ -1,5 +1,5 @@
 import { createReducer } from "typesafe-actions";
-import { CouponState, ActionsType } from "./types";
+import { CouponState, CouponsActionsType } from "./types";
 import actions from "./actions";
 
 const initialState: CouponState = {
@@ -7,7 +7,7 @@ const initialState: CouponState = {
   loading: false,
 };
 
-const reducer = createReducer<CouponState, ActionsType>(initialState)
+const reducer = createReducer<CouponState, CouponsActionsType>(initialState)
   .handleAction(actions.fetchAllCouponsSuccess, (_, actions) => ({
     coupons: actions.payload,
     loading: false,

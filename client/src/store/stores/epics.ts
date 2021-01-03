@@ -6,14 +6,14 @@ import { catchError, filter, map, mergeMap, tap } from "rxjs/operators";
 import * as API from "../../services/api/store";
 
 import constants from "./constants";
-import { ActionsType } from "./types";
+import { StoreActionsType } from "./types";
 import actions from "./actions";
 
 import { RootState } from "../index";
 
 export const getAllStoresEpic: Epic<
-  ActionsType,
-  ActionsType,
+  StoreActionsType,
+  StoreActionsType,
   RootState,
   typeof API
 > = (action$, _, { getStoresAPI }) => {

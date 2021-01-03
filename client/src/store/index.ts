@@ -11,12 +11,15 @@ import { getAllCouponsEpic } from "./coupons/epics";
 
 import storeReducer from "./stores/reducers";
 import couponReducer from "./coupons/reducers";
-import { ActionsType } from "./stores/types";
+import { StoreActionsType } from "./stores/types";
+import { CouponsActionsType } from "./coupons/types";
 import * as API from "../services/api";
 
 export type RootState = CombinedState<
   StateFromReducersMapObject<typeof reducers>
 >;
+
+type ActionsType = StoreActionsType | CouponsActionsType;
 
 declare global {
   interface Window {
