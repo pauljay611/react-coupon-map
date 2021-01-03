@@ -11,7 +11,7 @@ import actions from "./actions";
 
 import { RootState } from "../index";
 
-export const getAllStoresEpic: Epic<
+export const getAllCouponsEpic: Epic<
   ActionsType,
   ActionsType,
   RootState,
