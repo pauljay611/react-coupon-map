@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Category from "../Category";
 import { ICategory, IStore } from "../../types";
-import store, { RootState } from "../../store";
+import { RootState } from "../../store";
 import { fetchAllStores } from "../../store/stores/actions";
+import { useStores } from "../../hooks/store";
 interface Props {
   categories: ICategory[];
   stores: IStore[];
@@ -19,15 +20,8 @@ const Wrapper = styld.div`
 `;
 
 const Map: React.FC<Props> = (props: Props) => {
-  const { stores, loading } = useSelector((state: RootState) => state.store);
-  const dispatch = useDispatch();
+  const { stores, loading } = useStores();
   const { categories } = props;
-
-  useEffect(() => {
-    dispatch(fetchAllStores());
-  }, []);
-
-  console.log(stores);
 
   function renderStores() {
     if (stores.length === 0) return null;
