@@ -1,10 +1,8 @@
 import React from "react";
 import styld from "styled-components";
 import { useCoupons } from "../../hooks/coupon";
-import { ICoupon } from "../../types";
-interface Props {
-  coupons: ICoupon[];
-}
+
+interface Props {}
 
 const Wrapper = styld.div`
     width: 100%;
@@ -13,7 +11,7 @@ const Wrapper = styld.div`
     border: 1px solid black;
 `;
 
-const Coupon: React.FC<Props> = (props: Props) => {
+const Coupon: React.FC<Props> = () => {
   const { coupons, loading } = useCoupons();
 
   function renderCoupons() {

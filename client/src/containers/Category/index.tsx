@@ -1,9 +1,8 @@
 import React from "react";
 import styld from "styled-components";
+import { useCategory } from "../../hooks/category";
 import { ICategory } from "../../types";
-interface Props {
-  categories: ICategory[];
-}
+interface Props {}
 
 const Wrapper = styld.div`
     width: 100%;
@@ -15,7 +14,19 @@ const Wrapper = styld.div`
 `;
 
 const Category: React.FC<Props> = (props: Props) => {
-  return <Wrapper>Category</Wrapper>;
+  const { categories, loading } = useCategory();
+
+  function renderCoupons() {
+    if (categories.length === 0) return null;
+    if (loading) return <span>loading</span>;
+    return categories.map((coupon) => <div key={coupon.ID}>{coupon.name}</div>);
+  }
+  return (
+    <Wrapper>
+      Category
+      {renderCoupons()}
+    </Wrapper>
+  );
 };
 
 export default Category;

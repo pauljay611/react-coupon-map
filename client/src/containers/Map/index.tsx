@@ -6,7 +6,6 @@ import { ICategory, IStore } from "../../types";
 import { useStores } from "../../hooks/store";
 interface Props {
   categories: ICategory[];
-  stores: IStore[];
 }
 
 const Wrapper = styld.div`

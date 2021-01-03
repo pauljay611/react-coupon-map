@@ -31,34 +31,12 @@ const mockCategories: ICategory[] = [
   { ID: "1", name: "drink", description: "soft drink" },
 ];
 
-const mockStores: IStore[] = [
-  {
-    ID: "1",
-    name: "John",
-    description: "louisa coffee",
-    lat: 25.0335,
-    lng: 121.564,
-    category_id: 1,
-  },
-];
-
-const mockCoupons: ICoupon[] = [
-  {
-    ID: "1",
-    name: "louisa coffee 50% off",
-    description: "louisa coffee 50% off",
-    type: CouponType.Discount,
-    dueTimestamp: 1234567890,
-    image: "https://cdn.webapp/image",
-  },
-];
-
 const App: React.FC = () => (
   <Layout>
     <Wrapper>
       <Provider store={store}>
-        <Coupon coupons={mockCoupons}></Coupon>
-        <Map categories={mockCategories} stores={mockStores}></Map>
+        <Coupon></Coupon>
+        <Map categories={mockCategories}></Map>
       </Provider>
     </Wrapper>
   </Layout>
