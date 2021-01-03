@@ -1,12 +1,12 @@
 import { Epic } from "redux-observable";
 import { isOfType } from "typesafe-actions";
-import { from } from "rxjs";
+import { from, of } from "rxjs";
 import { catchError, filter, map, mergeMap, tap } from "rxjs/operators";
 
 import * as API from "../../services/api/store";
 
 import constants from "./constants";
-import { ActionsType, StoreState } from "./types";
+import { ActionsType } from "./types";
 import actions from "./actions";
 
 import { RootState } from "../index";
@@ -16,11 +16,14 @@ export const getAllStoresEpic: Epic<
   ActionsType,
   RootState,
   typeof API
-> = (action$, store, { getStoresAPI }) => {
+> = (action$, _, { getStoresAPI }) => {
   return action$.pipe(
     filter(isOfType(constants.FETCH_ALL_STORES)),
     mergeMap(() =>
-      from(getStoresAPI()).pipe(map(actions.fetchAllStoresSuccess))
+      from(getStoresAPI()).pipe(
+        map(actions.fetchAllStoresSuccess),
+        catchError((err) => of(actions.fetchAllStoresError(err)))
+      )
     )
   );
 };

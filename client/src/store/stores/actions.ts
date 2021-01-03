@@ -15,17 +15,8 @@ export const fetchAllStoresError = createAction(
   (error: Error) => error
 )();
 
-export const setAllStores = createAction(
-  constants.SET_ALL_STORES,
-  (stores: IStore[]) => stores
-)();
-
-export const getStore = createAction(constants.GET_STORE, (id: number) => id)();
-
 export default {
   fetchAllStoresSuccess,
   fetchAllStores,
   fetchAllStoresError,
-  getStore,
-  setAllStores,
 } as const;
