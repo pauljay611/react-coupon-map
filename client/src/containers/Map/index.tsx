@@ -4,7 +4,7 @@ import styld from "styled-components";
 import Category from "../Category";
 import { useStores } from "../../hooks/store";
 
-import Map from "./map";
+import Map from "../../component/GoogleMap";
 
 interface Props {}
 
