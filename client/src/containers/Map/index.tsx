@@ -21,14 +21,12 @@ const Map: React.FC<Props> = (props: Props) => {
   function renderStores() {
     if (stores.length === 0) return null;
     if (loading) return <span>loading</span>;
-    return stores.map((store) => <div key={store.ID}>{store.name}</div>);
+    return <GoogleMap stores={stores} />;
   }
 
   return (
     <Wrapper>
-      Map
       <Category />
-      <GoogleMap />
       {renderStores()}
     </Wrapper>
   );
