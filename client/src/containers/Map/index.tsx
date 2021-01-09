@@ -4,7 +4,7 @@ import styld from "styled-components";
 import Category from "../Category";
 import { useStores } from "../../hooks/store";
 
-import Map from "../../component/GoogleMap";
+import GoogleMap from "../../component/GoogleMap";
 
 interface Props {}
 
@@ -15,7 +15,7 @@ const Wrapper = styld.div`
     border: 1px solid black;
 `;
 
-const MapWrapper: React.FC<Props> = (props: Props) => {
+const Map: React.FC<Props> = (props: Props) => {
   const { stores, loading } = useStores();
 
   function renderStores() {
@@ -28,10 +28,10 @@ const MapWrapper: React.FC<Props> = (props: Props) => {
     <Wrapper>
       Map
       <Category />
-      <Map />
+      <GoogleMap />
       {renderStores()}
     </Wrapper>
   );
 };
 
-export default MapWrapper;
+export default Map;
