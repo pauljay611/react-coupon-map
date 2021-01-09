@@ -3,17 +3,20 @@ import Store from "../services/store";
 import Coupon from "../services/coupon";
 import Category from "../services/category";
 
-export const getAllStores = async (req: Request, res: Response) => {
-  const stores = await Store.getAllData();
+export const getStores = async (req: Request, res: Response) => {
+  const stores = await Store.getAllData(req.query);
   res.status(200).json(stores);
 };
 
-export const getStoreByID = async (req: Request, res: Response) => {
+export const getStoreByID = async (
+  req: Request<{ id: number }>,
+  res: Response
+) => {
   const stores = await Store.getDataByID(+req.params.id);
   res.status(200).json(stores);
 };
 
-export const getAllCoupons = async (req: Request, res: Response) => {
+export const getCoupons = async (req: Request, res: Response) => {
   const coupons = await Coupon.getAllData();
   res.status(200).json(coupons);
 };
@@ -23,7 +26,7 @@ export const getCouponByID = async (req: Request, res: Response) => {
   res.status(200).json(coupons);
 };
 
-export const getAllCategories = async (req: Request, res: Response) => {
+export const getCategories = async (req: Request, res: Response) => {
   const categories = await Category.getAllData();
   res.status(200).json(categories);
 };

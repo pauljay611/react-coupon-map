@@ -1,20 +1,20 @@
 import express from "express";
 import {
-  getAllCategories,
-  getAllCoupons,
-  getAllStores,
+  getCategories,
+  getCoupons,
+  getStores,
   getStoreByID,
 } from "../api/controllers";
 
 const router = express.Router();
 
-router.get("/stores", getAllStores);
+router.get("/stores", getStores);
 router.get("/store/:id", getStoreByID);
 
-router.get("/coupons", getAllCoupons);
-router.get("/coupons", getAllCoupons);
+router.get("/coupons", getCoupons);
+router.get("/coupons", getCoupons);
 
-router.get("/categories", getAllCategories);
-router.get("/categories", getAllCategories);
+router.get("/categories", getCategories);
+router.get("/categories", getCategories);
 
 export default router;
