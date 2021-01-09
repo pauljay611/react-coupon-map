@@ -12,6 +12,24 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date(),
       },
+      {
+        name: "komeda coffee for free",
+        description: "komeda coffee for free",
+        type: "Free",
+        dueTimestamp: new Date(),
+        image: "https://cdn.webapp/image",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "coffee cup 50 price cut",
+        description: "coffee cup 50 price cut",
+        type: "PriceCut",
+        dueTimestamp: new Date(),
+        image: "https://cdn.webapp/image",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
     ]);
   },
   down: (queryInterface, Sequelize) => {
