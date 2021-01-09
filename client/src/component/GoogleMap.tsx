@@ -44,7 +44,7 @@ const Map: React.FC<Props> = ({ stores, currentPosition }) => {
         bootstrapURLKeys={{
           key: process.env.GOOGLE_MAP_KEY ?? "",
         }}
-        defaultCenter={defaultCenter}
+        defaultCenter={currentPosition ?? defaultCenter}
         defaultZoom={defaultZoom}
         center={currentPosition}
       >
