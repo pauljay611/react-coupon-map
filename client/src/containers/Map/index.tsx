@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import styld from "styled-components";
 
 import Category from "../Category";
-import { ICategory, IStore } from "../../types";
 import { useStores } from "../../hooks/store";
-interface Props {
-  categories: ICategory[];
-}
+
+import Map from "./map";
+
+interface Props {}
 
 const Wrapper = styld.div`
     width: 100%;
@@ -15,9 +15,8 @@ const Wrapper = styld.div`
     border: 1px solid black;
 `;
 
-const Map: React.FC<Props> = (props: Props) => {
+const MapWrapper: React.FC<Props> = (props: Props) => {
   const { stores, loading } = useStores();
-  const { categories } = props;
 
   function renderStores() {
     if (stores.length === 0) return null;
@@ -28,10 +27,11 @@ const Map: React.FC<Props> = (props: Props) => {
   return (
     <Wrapper>
       Map
-      <Category categories={categories} />
+      <Category />
+      <Map />
       {renderStores()}
     </Wrapper>
   );
 };
 
-export default Map;
+export default MapWrapper;
