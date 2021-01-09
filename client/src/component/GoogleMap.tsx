@@ -6,6 +6,7 @@ import { IStore } from "../types";
 
 interface Props {
   stores: IStore[];
+  currentPosition: { lat: number; lng: number };
 }
 
 interface MarkerProps {
@@ -30,22 +31,13 @@ const MarkerWrapper = styld.div`
 
 const defaultCenter = { lat: 40.756795, lng: -73.954298 };
 
-const defaultZoom = 12;
+const defaultZoom = 8;
 
 const Marker: React.FC<MarkerProps> = ({ text }) => {
   return <MarkerWrapper>{text}</MarkerWrapper>;
 };
 
-const Map: React.FC<Props> = ({ stores }) => {
-  const [currentPosition, setCurrentPosition] = useState<{
-    lat: number;
-    lng: number;
-  }>();
-
-  navigator.geolocation.getCurrentPosition(({ coords }) => {
-    setCurrentPosition({ lat: coords.latitude, lng: coords.longitude });
-  });
-
+const Map: React.FC<Props> = ({ stores, currentPosition }) => {
   return (
     <Wrapper>
       <GoogleMapReact

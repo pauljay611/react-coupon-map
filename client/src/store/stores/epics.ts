@@ -19,8 +19,8 @@ export const getAllStoresEpic: Epic<
 > = (action$, _, { getStoresAPI }) => {
   return action$.pipe(
     filter(isOfType(constants.FETCH_ALL_STORES)),
-    mergeMap(() =>
-      from(getStoresAPI()).pipe(
+    mergeMap((action) =>
+      from(getStoresAPI(action.payload)).pipe(
         map(actions.fetchAllStoresSuccess),
         catchError((err) => of(actions.fetchAllStoresError(err)))
       )

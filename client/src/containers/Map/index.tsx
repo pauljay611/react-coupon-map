@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styld from "styled-components";
 
 import Category from "../Category";
@@ -15,13 +15,26 @@ const Wrapper = styld.div`
     border: 1px solid black;
 `;
 
+const range = 2;
+
 const Map: React.FC<Props> = (props: Props) => {
-  const { stores, loading } = useStores();
+  const [currentPosition, setCurrentPosition] = useState<{
+    lat: number;
+    lng: number;
+  }>();
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(({ coords }) => {
+      setCurrentPosition({ lat: coords.latitude, lng: coords.longitude });
+    });
+  }, []);
+
+  const { stores, loading } = useStores({ range, location: currentPosition });
 
   function renderStores() {
-    if (stores.length === 0) return null;
+    if (stores.length === 0 || !currentPosition) return null;
     if (loading) return <span>loading</span>;
-    return <GoogleMap stores={stores} />;
+    return <GoogleMap stores={stores} currentPosition={currentPosition} />;
   }
 
   return (

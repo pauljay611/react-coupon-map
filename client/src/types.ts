@@ -7,6 +7,11 @@ export interface IStore {
   category_id: number;
 }
 
+export interface IStoresPayload {
+  location?: { lat: number; lng: number };
+  range: number;
+}
+
 export interface ICoupon {
   ID: string;
   name: string;

@@ -2,14 +2,15 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store";
 import { fetchAllStores } from "../store/stores/actions";
+import { IStoresPayload } from "../types";
 
-export const useStores = () => {
+export const useStores = (payload: IStoresPayload) => {
   const { stores, loading } = useSelector((state: RootState) => state.store);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchAllStores());
-  }, []);
+    if (payload.location) dispatch(fetchAllStores(payload));
+  }, [payload.location]);
 
   return { stores, loading } as const;
 };

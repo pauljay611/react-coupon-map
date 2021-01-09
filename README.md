@@ -16,9 +16,10 @@
 .env file
 
 ```
-APP_DB=coupon_map
-APP_DB_USERNAME=root
-APP_DB_PASSWORD=my-password
+APP_DB=mysql-db-name
+APP_DB_USERNAME=mysql-username
+APP_DB_PASSWORD=mysql-password
+GOOGLE_MAP_KEY=key-of-google-map
 ```
 
 ## create Table & seeds

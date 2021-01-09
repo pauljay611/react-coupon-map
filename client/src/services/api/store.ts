@@ -1,7 +1,14 @@
 import { api } from "./config";
-import { IStore } from "../../types";
+import { IStore, IStoresPayload } from "../../types";
 
-export const getStoresAPI = () =>
-  api.get<IStore[]>("/stores").then((res) => {
-    return res.data;
-  });
+export const getStoresAPI = (payload: IStoresPayload) =>
+  api
+    .get<IStore[]>("/stores", {
+      params: {
+        range: payload.range,
+        ...payload.location,
+      },
+    })
+    .then((res) => {
+      return res.data;
+    });
