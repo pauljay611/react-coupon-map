@@ -14,7 +14,7 @@ const Map: React.FC<Props> = () => {
     <div style={{ height: "400px", width: "100%" }}>
       <GoogleMapReact
         bootstrapURLKeys={{
-          key: "AIzaSyDH6kO6rEZ3ema7p8TAYdIcbsSfcWvpbj8",
+          key: process.env.GOOGLE_MAP_KEY ?? "",
         }}
         defaultCenter={{ lat: 40.756795, lng: -73.954298 }}
         defaultZoom={10}

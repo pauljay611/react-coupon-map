@@ -1,7 +1,7 @@
 import React from "react";
 import styld from "styled-components";
 import { useCategory } from "../../hooks/category";
-import { ICategory } from "../../types";
+
 interface Props {}
 
 const Wrapper = styld.div`
