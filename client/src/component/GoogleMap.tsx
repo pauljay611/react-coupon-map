@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import GoogleMapReact from "google-map-react";
 import styld from "styled-components";
 
@@ -7,17 +7,20 @@ import { IStore } from "../types";
 interface Props {
   stores: IStore[];
   currentPosition: { lat: number; lng: number };
+  handleZoomChange: (val: number) => void;
+  handleMarkerClick: (key: number, childProps: StoreMarkerProps) => void;
+  showInfoIndex?: number;
 }
 
 interface MarkerProps {
   lat: number;
   lng: number;
-  text: string;
 }
 
-interface CenterProps {
-  lat: number;
-  lng: number;
+export interface StoreMarkerProps extends MarkerProps {
+  text: string;
+  showInfo: boolean;
+  description: string;
 }
 
 const Wrapper = styld.div`
@@ -26,15 +29,20 @@ const Wrapper = styld.div`
 `;
 
 const MarkerWrapper = styld.div`
+  position: relative;
   width: 50px;
   height: 50px;
   line-height: 50px;
   text-align: center;
   border-radius: 50%;
   background-color: red;
+  transform: translate(-50%, -50%);
 `;
 
 const CenterWrapper = styld.div`
+  display:flex;
+  justify-content: center;
+  align-items: center;
   width: 200px;
   height: 200px;
   opacity: 0.3;
@@ -43,36 +51,76 @@ const CenterWrapper = styld.div`
   transform: translate(-50%, -50%);
 `;
 
-const defaultCenter = { lat: 40.756795, lng: -73.954298 };
+const Center = styld.div`
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: blue;
+`;
 
-const defaultZoom = 8;
+const MarkerInfo = styld.div`
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+`;
 
-const Marker: React.FC<MarkerProps> = ({ text }) => {
-  return <MarkerWrapper>{text}</MarkerWrapper>;
+export const defaultZoom = 8;
+
+const Marker: React.FC<StoreMarkerProps> = ({
+  text,
+  showInfo,
+  description,
+}) => {
+  function renderInfo() {
+    if (!showInfo) return null;
+    return <MarkerInfo>{description}</MarkerInfo>;
+  }
+  return (
+    <MarkerWrapper>
+      {text}
+      {renderInfo()}
+    </MarkerWrapper>
+  );
 };
 
-const Center: React.FC<CenterProps> = () => {
-  return <CenterWrapper />;
+const CenterMarker: React.FC<MarkerProps> = () => {
+  return (
+    <CenterWrapper>
+      <Center />
+    </CenterWrapper>
+  );
 };
 
-const Map: React.FC<Props> = ({ stores, currentPosition }) => {
+const Map: React.FC<Props> = ({
+  stores,
+  currentPosition,
+  handleZoomChange,
+  handleMarkerClick,
+  showInfoIndex = 0,
+}) => {
   return (
     <Wrapper>
       <GoogleMapReact
         bootstrapURLKeys={{
           key: process.env.GOOGLE_MAP_KEY ?? "",
         }}
-        defaultCenter={currentPosition ?? defaultCenter}
         defaultZoom={defaultZoom}
         center={currentPosition}
+        onZoomAnimationEnd={handleZoomChange}
+        onChildClick={handleMarkerClick}
       >
-        <Center {...currentPosition} />
-        {stores.map((store) => (
+        <CenterMarker {...currentPosition} />
+        {stores.map(({ ID, lat, lng, name, description }, index) => (
           <Marker
-            key={store.ID}
-            lat={store.lat}
-            lng={store.lng}
-            text={store.name}
+            key={ID}
+            lat={lat}
+            lng={lng}
+            text={name}
+            showInfo={showInfoIndex - 1 === index}
+            description={description}
           />
         ))}
       </GoogleMapReact>

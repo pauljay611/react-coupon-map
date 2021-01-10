@@ -9,8 +9,9 @@ export const useStores = (payload: IStoresPayload) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (payload.location) dispatch(fetchAllStores(payload));
-  }, [payload.location]);
+    if (payload.location || payload.range) dispatch(fetchAllStores(payload));
+    console.log(payload);
+  }, [payload.location, payload.range]);
 
   return { stores, loading } as const;
 };
