@@ -10,6 +10,7 @@ import GoogleMap, {
   StoreMarkerProps,
   defaultZoom,
 } from "../../component/GoogleMap";
+import { useCategory } from "../../hooks/category";
 
 interface Props {}
 
@@ -34,6 +35,8 @@ const Map: React.FC<Props> = (props: Props) => {
 
   const [showInfoIndex, setShowInfoIndex] = useState<number>();
 
+  const [currentCategory, setCurrentCategory] = useState<string>();
+
   useEffect(() => {
     if (!navigator.geolocation) return;
     navigator.geolocation.watchPosition(
@@ -49,6 +52,9 @@ const Map: React.FC<Props> = (props: Props) => {
   }, [currentPosition]);
 
   const { stores, loading } = useStores({ range, location: currentPosition });
+
+  const { categories, loading: categoriesLoading } = useCategory();
+
   const handleZoomChange = useCallback(
     debounce((val) => {
       setRange(calcRange(val));
@@ -56,13 +62,9 @@ const Map: React.FC<Props> = (props: Props) => {
     []
   );
 
-  const handleMarkerClick = useCallback(
-    (key: number, props: StoreMarkerProps) => {
-      console.log(key, props);
-      setShowInfoIndex(key);
-    },
-    []
-  );
+  const handleMarkerClick = useCallback((key: number) => {
+    setShowInfoIndex(key);
+  }, []);
 
   const renderMap = useCallback(() => {
     if (loading || !currentPosition) return <span>loading</span>;

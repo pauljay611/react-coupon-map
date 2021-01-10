@@ -10,7 +10,6 @@ export const useStores = (payload: IStoresPayload) => {
 
   useEffect(() => {
     if (payload.location || payload.range) dispatch(fetchAllStores(payload));
-    console.log(payload);
   }, [payload.location, payload.range]);
 
   return { stores, loading } as const;
