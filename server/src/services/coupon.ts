@@ -1,8 +1,8 @@
-import { findAllCoupons, findCouponByID } from "../dao/coupon";
+import { findCoupons, findCouponByID, FindCouponsQuery } from "../dao/coupon";
 
 class Coupon {
-  static async getAllData() {
-    const coupons = await findAllCoupons();
+  static async getAllData(query: FindCouponsQuery) {
+    const coupons = await findCoupons(query);
     return coupons;
   }
   static async getDataByID(id: number) {

@@ -1,8 +1,8 @@
 import { FindStoresQuery, findStores, findStoreByID } from "../dao/store";
 
 class Store {
-  static async getAllData(params: FindStoresQuery) {
-    const stores = await findStores(params);
+  static async getAllData(query: FindStoresQuery) {
+    const stores = await findStores(query);
     return stores;
   }
   static async getDataByID(id: number) {

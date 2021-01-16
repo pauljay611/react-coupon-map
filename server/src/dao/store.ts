@@ -16,14 +16,14 @@ export interface FindStoresQuery {
   category?: string;
 }
 
-export const findStores = async (params: FindStoresQuery) => {
-  if (!params.range || !params.lat || !params.lng) {
+export const findStores = async (query: FindStoresQuery) => {
+  if (!query.range || !query.lat || !query.lng) {
     const stores = await Store.findAll();
     return stores;
   }
-  const lat = +params.lat;
-  const lng = +params.lng;
-  const range = +params.range;
+  const lat = +query.lat;
+  const lng = +query.lng;
+  const range = +query.range;
 
   const lowestLat = lat - range;
   const greatestLat = lat + range;
@@ -35,10 +35,10 @@ export const findStores = async (params: FindStoresQuery) => {
     lng: { [Op.gte]: lowestLng, [Op.lt]: greatestLng },
   };
 
-  if (params.category) {
+  if (query.category) {
     whereCondition = {
       ...whereCondition,
-      category_id: { [Op.eq]: params.category },
+      category_id: { [Op.eq]: query.category },
     };
   }
   const stores = await Store.findAll({

@@ -17,7 +17,7 @@ export const getStoreByID = async (
 };
 
 export const getCoupons = async (req: Request, res: Response) => {
-  const coupons = await Coupon.getAllData();
+  const coupons = await Coupon.getAllData(req.query);
   res.status(200).json(coupons);
 };
 
