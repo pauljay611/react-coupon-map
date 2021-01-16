@@ -9,7 +9,8 @@ export const useStores = (payload: IStoresPayload) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (payload.location || payload.range) dispatch(fetchAllStores(payload));
+    if (payload.location && payload.range && payload.categories?.length)
+      dispatch(fetchAllStores(payload));
   }, [payload.location, payload.range]);
 
   return { stores, loading } as const;

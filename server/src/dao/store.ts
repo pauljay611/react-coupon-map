@@ -1,10 +1,19 @@
 import Store from "../models/store";
 import { Op } from "sequelize";
-
+interface Range {
+  [Op.gte]: number;
+  [Op.lt]: number;
+}
+interface Condition {
+  lat: Range;
+  lng: Range;
+  category_id?: { [Op.in]: string[] };
+}
 export interface FindStoresQuery {
   range?: number;
   lat?: number;
   lng?: number;
+  categories?: string[];
 }
 
 export const findStores = async (params: FindStoresQuery) => {
@@ -20,12 +29,22 @@ export const findStores = async (params: FindStoresQuery) => {
   const greatestLat = lat + range;
   const lowestLng = lng - range;
   const greatestLng = lng + range;
+
+  let whereCondition: Condition = {
+    lat: { [Op.gte]: lowestLat, [Op.lt]: greatestLat },
+    lng: { [Op.gte]: lowestLng, [Op.lt]: greatestLng },
+  };
+
+  if (params.categories) {
+    whereCondition = {
+      ...whereCondition,
+      category_id: { [Op.in]: params.categories },
+    };
+  }
+
   const stores = await Store.findAll({
     where: {
-      [Op.and]: {
-        lat: { [Op.gte]: lowestLat, [Op.lt]: greatestLat },
-        lng: { [Op.gte]: lowestLng, [Op.lt]: greatestLng },
-      },
+      [Op.and]: whereCondition,
     },
   });
   return stores;

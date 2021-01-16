@@ -9,6 +9,7 @@ export interface IStore {
 
 export interface IStoresPayload {
   location?: { lat: number; lng: number };
+  categories?: string[];
   range: number;
 }
 

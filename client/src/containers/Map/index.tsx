@@ -35,8 +35,6 @@ const Map: React.FC<Props> = (props: Props) => {
 
   const [showInfoIndex, setShowInfoIndex] = useState<number>();
 
-  const [currentCategory, setCurrentCategory] = useState<string>();
-
   useEffect(() => {
     if (!navigator.geolocation) return;
     navigator.geolocation.watchPosition(
@@ -51,9 +49,13 @@ const Map: React.FC<Props> = (props: Props) => {
     );
   }, [currentPosition]);
 
-  const { stores, loading } = useStores({ range, location: currentPosition });
+  const { currentCategoryID, loading: categoryLoading } = useCategory();
 
-  const { categories, loading: categoriesLoading } = useCategory();
+  const { stores, loading } = useStores({
+    range,
+    location: currentPosition,
+    categories: currentCategoryID ? [currentCategoryID] : undefined,
+  });
 
   const handleZoomChange = useCallback(
     debounce((val) => {
@@ -67,7 +69,8 @@ const Map: React.FC<Props> = (props: Props) => {
   }, []);
 
   const renderMap = useCallback(() => {
-    if (loading || !currentPosition) return <span>loading</span>;
+    if (loading || !currentPosition || categoryLoading)
+      return <span>loading</span>;
     return (
       <GoogleMap
         stores={stores}
@@ -87,4 +90,4 @@ const Map: React.FC<Props> = (props: Props) => {
   );
 };
 
-export default Map;
+export default React.memo(Map);
