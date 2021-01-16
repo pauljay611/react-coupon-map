@@ -7,13 +7,13 @@ interface Range {
 interface Condition {
   lat: Range;
   lng: Range;
-  category_id?: { [Op.in]: string[] };
+  category_id?: { [Op.eq]: string };
 }
 export interface FindStoresQuery {
   range?: number;
   lat?: number;
   lng?: number;
-  categories?: string[];
+  category?: string;
 }
 
 export const findStores = async (params: FindStoresQuery) => {
@@ -35,13 +35,12 @@ export const findStores = async (params: FindStoresQuery) => {
     lng: { [Op.gte]: lowestLng, [Op.lt]: greatestLng },
   };
 
-  if (params.categories) {
+  if (params.category) {
     whereCondition = {
       ...whereCondition,
-      category_id: { [Op.in]: params.categories },
+      category_id: { [Op.eq]: params.category },
     };
   }
-
   const stores = await Store.findAll({
     where: {
       [Op.and]: whereCondition,

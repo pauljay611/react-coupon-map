@@ -6,7 +6,7 @@ export const getStoresAPI = (payload: IStoresPayload) =>
     .get<IStore[]>("/stores", {
       params: {
         range: payload.range,
-        categories: payload.categories,
+        category: payload.category,
         ...payload.location,
       },
     })

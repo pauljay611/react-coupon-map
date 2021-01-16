@@ -6,10 +6,7 @@ import debounce from "lodash.debounce";
 import Category from "../Category";
 import { useStores } from "../../hooks/store";
 
-import GoogleMap, {
-  StoreMarkerProps,
-  defaultZoom,
-} from "../../component/GoogleMap";
+import GoogleMap, { defaultZoom } from "../../component/GoogleMap";
 import { useCategory } from "../../hooks/category";
 
 interface Props {}
@@ -35,6 +32,8 @@ const Map: React.FC<Props> = (props: Props) => {
 
   const [showInfoIndex, setShowInfoIndex] = useState<number>();
 
+  const [activeItem, setActiveItem] = useState<number>(0);
+
   useEffect(() => {
     if (!navigator.geolocation) return;
     navigator.geolocation.watchPosition(
@@ -49,12 +48,17 @@ const Map: React.FC<Props> = (props: Props) => {
     );
   }, [currentPosition]);
 
-  const { currentCategoryID, loading: categoryLoading } = useCategory();
+  const {
+    currentCategoryID,
+    categories,
+    loading: categoryLoading,
+    setCurrentCategoryID,
+  } = useCategory();
 
   const { stores, loading } = useStores({
     range,
     location: currentPosition,
-    categories: currentCategoryID ? [currentCategoryID] : undefined,
+    category: currentCategoryID,
   });
 
   const handleZoomChange = useCallback(
@@ -68,6 +72,14 @@ const Map: React.FC<Props> = (props: Props) => {
     setShowInfoIndex(key);
   }, []);
 
+  const handleCategoryChange = useCallback(
+    (itemIndex: number) => () => {
+      setCurrentCategoryID(categories[itemIndex].ID);
+      setActiveItem(itemIndex);
+    },
+    [categories]
+  );
+
   const renderMap = useCallback(() => {
     if (loading || !currentPosition || categoryLoading)
       return <span>loading</span>;
@@ -80,14 +92,17 @@ const Map: React.FC<Props> = (props: Props) => {
         showInfoIndex={showInfoIndex}
       />
     );
-  }, [currentPosition, stores]);
+  }, [currentPosition, stores, categoryLoading, loading, showInfoIndex]);
 
   return (
     <Wrapper>
-      <Category />
+      <Category
+        handleCategoryChange={handleCategoryChange}
+        activeItem={activeItem}
+      />
       {renderMap()}
     </Wrapper>
   );
 };
 
-export default React.memo(Map);
+export default Map;
