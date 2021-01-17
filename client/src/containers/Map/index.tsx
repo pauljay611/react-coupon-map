@@ -72,13 +72,12 @@ const Map: React.FC<Props> = (props: Props) => {
     debounce((val) => {
       setRange(calcRange(val));
       setDefaultZoom(val);
-    }, 2000),
+    }, 1000),
     []
   );
 
   const handleMarkerClick = useCallback(
     (index: string) => {
-      console.log(stores, +index);
       setShowInfoID(index);
       getCoupons(index);
     },
