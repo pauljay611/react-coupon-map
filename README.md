@@ -1,4 +1,6 @@
-# React Coupon Map
+# React Express Typescript Example
+
+> A Map with coupons and stores
 
 ## Environments
 
@@ -12,6 +14,7 @@
 - yarn
 - yarn db:create
 - yarn server:start
+- yarn client:start
 
 .env file
 
