@@ -3,6 +3,8 @@ import cors from "cors";
 
 import { authenticateDatabase } from "./models/index";
 import routes from "./api/routes";
+import errorHandler from "./api/middleware";
+import Exception from "./error";
 
 const app = express();
 const PORT = 8000;
@@ -20,6 +22,13 @@ app.use(corsMiddleware);
 app.use("/", routes);
 
 app.get("/", (req, res) => res.send("Express + TypeScript Server"));
+
+app.get("*", function (req, res, next) {
+  const error = new Exception(301);
+  next(error);
+});
+
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   authenticateDatabase();

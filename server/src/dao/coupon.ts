@@ -1,23 +1,21 @@
 import Coupon from "../models/coupon";
 import Store from "../models/store";
-export interface FindCouponsQuery {
-  id?: number;
-}
 
-export const findCoupons = async (query: FindCouponsQuery) => {
-  if (query.id) {
-    const conpons = await Coupon.findAll({
-      include: [
-        {
-          model: Store as any,
-          where: { id: query.id },
-          attributes: [],
-        },
-      ],
-    });
-    return conpons;
-  }
+export const findCoupons = async () => {
   const conpons = await Coupon.findAll();
+  return conpons;
+};
+
+export const findCouponByQuery = async (id: number) => {
+  const conpons = await Coupon.findAll({
+    include: [
+      {
+        model: Store as any,
+        where: { id },
+        attributes: [],
+      },
+    ],
+  });
   return conpons;
 };
 
