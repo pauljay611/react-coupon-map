@@ -1,7 +1,9 @@
 import { api } from "./config";
-import { ICoupon } from "../../types";
+import { ICoupon, ICouponsPayload } from "../../types";
 
-export const getCouponsAPI = () =>
-  api.get<ICoupon[]>("/coupons").then((res) => {
-    return res.data;
-  });
+export const getCouponsAPI = (payload: ICouponsPayload) =>
+  api
+    .get<ICoupon[]>("/coupons", { params: { id: payload.storeID } })
+    .then((res) => {
+      return res.data;
+    });

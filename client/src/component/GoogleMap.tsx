@@ -8,8 +8,9 @@ interface Props {
   stores: IStore[];
   currentPosition: { lat: number; lng: number };
   handleZoomChange: (val: number) => void;
-  handleMarkerClick: (key: number, childProps: StoreMarkerProps) => void;
-  showInfoIndex?: number;
+  handleMarkerClick: (key: string, childProps: StoreMarkerProps) => void;
+  showInfoID?: string;
+  defaultZoom: number;
 }
 
 interface MarkerProps {
@@ -62,12 +63,10 @@ const MarkerInfo = styld.div`
   position: absolute;
   width: 100px;
   height: 100px;
-  top: 0;
-  left: 0;
+  top: 30px;
+  left: 30px;
   background-color: #fff;
 `;
-
-export const defaultZoom = 8;
 
 const Marker: React.FC<StoreMarkerProps> = ({
   text,
@@ -99,7 +98,8 @@ const Map: React.FC<Props> = ({
   currentPosition,
   handleZoomChange,
   handleMarkerClick,
-  showInfoIndex = 0,
+  showInfoID,
+  defaultZoom,
 }) => {
   return (
     <Wrapper>
@@ -113,13 +113,13 @@ const Map: React.FC<Props> = ({
         onChildClick={handleMarkerClick}
       >
         <CenterMarker {...currentPosition} />
-        {stores.map(({ ID, lat, lng, name, description }, index) => (
+        {stores.map(({ ID, lat, lng, name, description }) => (
           <Marker
             key={ID}
             lat={lat}
             lng={lng}
             text={name}
-            showInfo={showInfoIndex - 1 === index}
+            showInfo={showInfoID === ID}
             description={description}
           />
         ))}

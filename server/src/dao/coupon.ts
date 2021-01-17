@@ -1,6 +1,5 @@
 import Coupon from "../models/coupon";
 import Store from "../models/store";
-import { Op } from "sequelize";
 export interface FindCouponsQuery {
   id?: number;
 }

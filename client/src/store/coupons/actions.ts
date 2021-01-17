@@ -1,6 +1,6 @@
 import { createAction } from "typesafe-actions";
 import { Error } from "../../services/api/types";
-import { ICoupon } from "../../types";
+import { ICoupon, ICouponsPayload } from "../../types";
 import constants from "./constants";
 
 export const fetchAllCouponsSuccess = createAction(
@@ -8,7 +8,10 @@ export const fetchAllCouponsSuccess = createAction(
   (coupons: ICoupon[]) => coupons
 )();
 
-export const fetchAllCoupons = createAction(constants.FETCH_ALL_COUPONS)();
+export const fetchAllCoupons = createAction(
+  constants.FETCH_ALL_COUPONS,
+  (payload: ICouponsPayload) => payload
+)();
 
 export const fetchAllCouponsError = createAction(
   constants.FETCH_ALL_COUPONS_ERROR,

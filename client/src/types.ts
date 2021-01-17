@@ -22,6 +22,10 @@ export interface ICoupon {
   image: string;
 }
 
+export interface ICouponsPayload {
+  storeID: number;
+}
+
 export enum CouponType {
   PriceCut,
   Discount,

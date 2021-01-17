@@ -16,7 +16,6 @@ const Wrapper = styld.div`
     left:0;
     z-index: 999;
     background-color: #fff;
-    border: 1px solid black;
 `;
 
 const CategoryItem = styld.div<{ active: boolean }>`

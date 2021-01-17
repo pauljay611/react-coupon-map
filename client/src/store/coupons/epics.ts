@@ -19,8 +19,8 @@ export const getAllCouponsEpic: Epic<
 > = (action$, _, { getCouponsAPI }) => {
   return action$.pipe(
     filter(isOfType(constants.FETCH_ALL_COUPONS)),
-    mergeMap(() =>
-      from(getCouponsAPI()).pipe(
+    mergeMap((action) =>
+      from(getCouponsAPI(action.payload)).pipe(
         map(actions.fetchAllCouponsSuccess),
         catchError((err) => of(actions.fetchAllCouponsError(err)))
       )
