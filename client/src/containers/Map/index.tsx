@@ -33,7 +33,7 @@ const Map: React.FC<Props> = (props: Props) => {
 
   const [range, setRange] = useState<number>(calcRange(initialZoom));
 
-  const [showInfoID, setShowInfoID] = useState<string>();
+  const [showInfoID, setShowInfoID] = useState<number>();
 
   const [activeItem, setActiveItem] = useState<number>(0);
 
@@ -77,7 +77,7 @@ const Map: React.FC<Props> = (props: Props) => {
   );
 
   const handleMarkerClick = useCallback(
-    (index: string) => {
+    (index: number) => {
       setShowInfoID(index);
       getCoupons(index);
     },

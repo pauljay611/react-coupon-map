@@ -8,8 +8,8 @@ interface Props {
   stores: IStore[];
   currentPosition: { lat: number; lng: number };
   handleZoomChange: (val: number) => void;
-  handleMarkerClick: (key: string, childProps: StoreMarkerProps) => void;
-  showInfoID?: string;
+  handleMarkerClick: (key: number, childProps: StoreMarkerProps) => void;
+  showInfoID?: number;
   defaultZoom: number;
 }
 
@@ -98,9 +98,10 @@ const Map: React.FC<Props> = ({
   currentPosition,
   handleZoomChange,
   handleMarkerClick,
-  showInfoID,
+  showInfoID = 0,
   defaultZoom,
 }) => {
+  console.log(showInfoID, stores);
   return (
     <Wrapper>
       <GoogleMapReact
@@ -119,7 +120,7 @@ const Map: React.FC<Props> = ({
             lat={lat}
             lng={lng}
             text={name}
-            showInfo={showInfoID === ID}
+            showInfo={+showInfoID === ID}
             description={description}
           />
         ))}

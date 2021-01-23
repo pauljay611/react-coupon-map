@@ -5,10 +5,15 @@ import { useCoupons } from "../../hooks/coupon";
 interface Props {}
 
 const Wrapper = styld.div`
+    display:flex;
     width: 100%;
     height: 200px;
     margin-bottom: 2%;
     border: 1px solid black;
+`;
+
+const ConponBlock = styld.div`
+    width: 100px;
 `;
 
 const Coupon: React.FC<Props> = () => {
@@ -17,15 +22,12 @@ const Coupon: React.FC<Props> = () => {
   function renderCoupons() {
     if (coupons.length === 0) return null;
     if (loading) return <span>loading</span>;
-    return coupons.map((coupon) => <div key={coupon.ID}>{coupon.name}</div>);
+    return coupons.map((coupon) => (
+      <ConponBlock key={coupon.ID}>{coupon.name}</ConponBlock>
+    ));
   }
 
-  return (
-    <Wrapper>
-      Coupon
-      {renderCoupons()}
-    </Wrapper>
-  );
+  return <Wrapper>{renderCoupons()}</Wrapper>;
 };
 
 export default Coupon;
