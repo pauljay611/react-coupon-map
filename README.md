@@ -1,6 +1,6 @@
 # React Express Typescript Example
 
-> A Map with coupons and stores
+> A simple react express typescript example with google map app
 
 ## Environments
 
@@ -27,9 +27,4 @@ GOOGLE_MAP_KEY=key-of-google-map
 
 ## create Table & seeds
 
-- cd server && npx sequelize-cli model:generate --name Coupon --attributes ID:number,name:string
-- edit models & migrates
-- npx sequelize-cli db:migrate
-- npx sequelize-cli seed:generate --name coupon
-- edit seeders
-- npx sequelize-cli db:seed:all
+- see https://sequelize.org/master/manual/migrations.html
