@@ -101,7 +101,6 @@ const Map: React.FC<Props> = ({
   showInfoID = 0,
   defaultZoom,
 }) => {
-  console.log(showInfoID, stores);
   return (
     <Wrapper>
       <GoogleMapReact
