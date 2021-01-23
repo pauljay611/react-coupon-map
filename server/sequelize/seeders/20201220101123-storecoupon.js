@@ -11,13 +11,13 @@ module.exports = {
       },
       {
         coupon_id: 2,
-        store_id: 4,
+        store_id: 2,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         coupon_id: 3,
-        store_id: 5,
+        store_id: 3,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
