@@ -6,7 +6,7 @@ import routes from "./api/routes";
 import errorHandler from "./api/middleware";
 import Exception from "./error";
 
-const app = express();
+export const app = express();
 const PORT = 8000;
 
 const corsOptions = {
