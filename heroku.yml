@@ -4,4 +4,9 @@ build:
   config:
     NODE_ENV: stage
 run:
-  web: yarn server:deploy
+  web:
+    command:
+      - heroku git:clone -a react-coupon-map
+      - docker-compose up -d
+      - yarn db:create
+      - yarn server:start
