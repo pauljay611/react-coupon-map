@@ -7,7 +7,7 @@ import errorHandler from "./api/middleware";
 import Exception from "./error";
 
 export const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 const corsOptions = {
   origin: ["http://localhost:9000"],
