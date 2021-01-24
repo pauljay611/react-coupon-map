@@ -12,6 +12,10 @@ echo "build"
 
 yarn workspace server build 
 
+echo "docker compose up"
+
+docker-compose up -d
+
 echo "start db"
 
 yarn db:create
