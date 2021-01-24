@@ -73,6 +73,6 @@
     "client:build": "yarn workspace client build",
     "db:create": "yarn workspace server db:migrate && yarn workspace server db:seeder",
     "test": "jest",
-    "start": "docker-compose up -d && yarn db:create && yarn server:start"
+    "server:deploy": "docker-compose up -d && yarn db:create && yarn server:start"
   }
 }
