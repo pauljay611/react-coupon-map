@@ -2,14 +2,6 @@
 
 echo "start building"
 
-rm -rf ./node_modules 
-
-echo "yarn"
-
-yarn 
-
-echo "build"
-
 yarn workspace server build 
 
 echo "docker compose up"
