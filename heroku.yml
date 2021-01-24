@@ -4,8 +4,7 @@ build:
   config:
     NODE_ENV: stage
 release:
-  dockerfile: Dockerfile
-  target: builder
+  image: worker
   command:
     - docker-compose up -d
     - yarn db:create
