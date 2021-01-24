@@ -1,13 +1,7 @@
 build:
   docker:
     web: Dockerfile
-    worker: Dockerfile
   config:
     NODE_ENV: stage
-release:
-  image: worker
-  command:
-    - docker-compose up -d
-    - yarn db:create
 run:
-  web: yarn server:start
+  web: yarn server:deploy
