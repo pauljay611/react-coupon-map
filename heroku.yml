@@ -6,7 +6,4 @@ build:
 run:
   web:
     command:
-      - heroku git:clone -a react-coupon-map
-      - docker-compose up -d
-      - yarn db:create
       - yarn server:start
