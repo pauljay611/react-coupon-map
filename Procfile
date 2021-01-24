@@ -1,1 +1,4 @@
-web: yarn server:start
+web:     
+    command:
+      - yarn workspace server build
+      - yarn workspace server node ./dist/src/server.js
