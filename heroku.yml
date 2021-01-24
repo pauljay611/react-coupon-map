@@ -3,5 +3,9 @@ build:
     web: Dockerfile
   config:
     NODE_ENV: stage
+release:
+  command:
+    - docker-compose up -d
+    - yarn db:create
 run:
-  web: yarn server:deploy
+  web: yarn server:start
