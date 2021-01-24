@@ -6,5 +6,5 @@ build:
 run:
   web:
     command:
-      - yarn
-      - yarn server:start
+      - yarn workspace server build
+      - yarn workspace server node ./dist/src/server.js
