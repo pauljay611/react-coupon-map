@@ -18,7 +18,7 @@ const ConponBlock = styld.div`
 
 const Coupon: React.FC<Props> = () => {
   const { coupons, loading } = useCoupons();
-
+  console.log(process.env.API_ENDPOINT);
   function renderCoupons() {
     if (coupons.length === 0) return null;
     if (loading) return <span>loading</span>;
