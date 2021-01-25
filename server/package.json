@@ -12,7 +12,7 @@
     "db:seeder": "npx sequelize-cli db:seed:all",
     "db:migrate": "npx sequelize-cli db:migrate",
     "db:seeder:undo": "npx sequelize-cli db:seed:undo:all",
-    "db:migrate:undo": "npx sequelize-cli db:migrate:undo:al",
+    "db:migrate:undo": "npx sequelize-cli db:migrate:undo:all",
     "db:migrate:reset": "yarn db:migrate:undo && yarn db:migrate"
   }
 }
