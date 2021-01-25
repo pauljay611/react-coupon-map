@@ -4,6 +4,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert("Coupons", [
       {
+        id: 1,
         name: "louisa coffee 50% off",
         description: "louisa coffee 50% off",
         type: "Discount",
@@ -13,6 +14,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        id: 2,
         name: "komeda coffee for free",
         description: "komeda coffee for free",
         type: "Free",
@@ -22,6 +24,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        id: 3,
         name: "coffee cup 50 price cut",
         description: "coffee cup 50 price cut",
         type: "PriceCut",
