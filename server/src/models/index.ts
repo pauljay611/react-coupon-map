@@ -1,5 +1,4 @@
 import { Sequelize } from "sequelize";
-import mysqlConfig from "../../sequelize/config/config.js";
 import Store, { storeModelName, storeModelAttributes } from "./store";
 import Coupon, { couponModelName, couponModelAttributes } from "./coupon";
 import Category, {
@@ -11,9 +10,9 @@ const env = process.env.NODE_ENV || "development";
 
 const config = {
   development: {
-    username: process.env.APP_DB_USERNAME,
-    password: process.env.APP_DB_PASSWORD,
-    database: process.env.APP_DB,
+    username: "root",
+    password: "my-password",
+    database: "coupon_map",
     host: "127.0.0.1",
     dialect: "mysql",
     port: 3306,
