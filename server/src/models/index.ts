@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import config from "../configs/mysql";
+import mysqlConfig from "../../sequelize/config/config.js";
 import Store, { storeModelName, storeModelAttributes } from "./store";
 import Coupon, { couponModelName, couponModelAttributes } from "./coupon";
 import Category, {
@@ -7,16 +7,25 @@ import Category, {
   categoryModelAttributes,
 } from "./category";
 
-const sequelize = new Sequelize(config.database, config.user, config.password, {
-  host: config.host,
-  port: config.port,
-  dialect: "mysql",
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 30000,
-  },
-});
+const env = process.env.NODE_ENV || "development";
+
+const config = mysqlConfig[env];
+
+const sequelize = new Sequelize(
+  config.database,
+  config.username,
+  config.password,
+  {
+    host: config.host,
+    port: config.port,
+    dialect: "mysql",
+    pool: {
+      max: 5,
+      min: 0,
+      idle: 30000,
+    },
+  }
+);
 
 export async function authenticateDatabase() {
   try {
