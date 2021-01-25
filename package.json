@@ -4,9 +4,6 @@
   "main": "index.js",
   "license": "MIT",
   "private": true,
-  "engines": {
-    "node": "14.x"
-  },
   "workspaces": [
     "server",
     "client",
