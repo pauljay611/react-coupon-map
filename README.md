@@ -2,12 +2,9 @@
 
 > A simple react express typescript example with google map app
 
-## Environments
+[demo](https://react-express-typescript-example.vercel.app/)
 
-- docker 20.10.0
-- node.js 10.16.3
-
-## setup
+## Setup
 
 - clone project
 - docker-compose up -d
@@ -25,6 +22,20 @@ APP_DB_PASSWORD=mysql-password
 GOOGLE_MAP_KEY=key-of-google-map
 ```
 
-## create Table & seeds
+## Create Table & seeds
 
 - see https://sequelize.org/master/manual/migrations.html
+
+## Deployment
+
+- server
+  - heroku
+  - local -> heroku login -> heroku local
+  - push to master
+    - deploy to stage
+  - manual to production
+- client
+  - vercel
+  - push to master
+    - deploy to stage
+    - manual to production
