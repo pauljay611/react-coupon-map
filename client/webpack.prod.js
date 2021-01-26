@@ -1,6 +1,6 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const Dotenv = require("dotenv-webpack");
+const webpack = require("webpack");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -54,6 +54,6 @@ module.exports = {
       template: "index.html",
       filename: "index.html",
     }),
-    new Dotenv({ path: "../.env" }),
+    new webpack.EnvironmentPlugin(["API_ENDPOINT"]),
   ],
 };
