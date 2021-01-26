@@ -13,7 +13,7 @@ const corsOptions = {
   origin: [
     "http://localhost:9000",
     "http://localhost:3000",
-    "https://react-express-typescript-example.vercel.app/",
+    "https://react-express-typescript-example.vercel.app",
   ],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
   allowedHeaders: ["Content-Type", "Authorization"],
