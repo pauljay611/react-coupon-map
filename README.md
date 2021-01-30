@@ -6,7 +6,7 @@
 
 ## Setup
 
-- clone project
+- git clone https://github.com/pauljay611/react-express-typescript-example.git
 - docker-compose up -d
 - yarn
 - yarn db:create
@@ -30,12 +30,7 @@ GOOGLE_MAP_KEY=key-of-google-map
 
 - server
   - heroku
-  - local -> heroku login -> heroku local
-  - push to master
-    - deploy to stage
-  - manual to production
+  - push to sta/server pro/server
 - client
   - vercel
-  - push to master
-    - deploy to stage
-    - manual to production
+  - push to sta/client pro/client

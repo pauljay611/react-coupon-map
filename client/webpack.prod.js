@@ -54,6 +54,6 @@ module.exports = {
       template: "index.html",
       filename: "index.html",
     }),
-    new webpack.EnvironmentPlugin(["API_ENDPOINT"]),
+    new webpack.EnvironmentPlugin(["API_ENDPOINT", "GOOGLE_MAP_KEY"]),
   ],
 };
